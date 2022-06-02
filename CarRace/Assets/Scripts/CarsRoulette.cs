@@ -11,9 +11,10 @@ public class CarsRoulette : MonoBehaviour
     }
 
     [SerializeField] private Material _groundMat;
-
     public Color[] backColour = new Color[4];
     public Color[] trackColour = new Color[4];
+
+    public Color targetColor;
 
     public StateEnum State;
 
@@ -38,7 +39,7 @@ public class CarsRoulette : MonoBehaviour
             car.SetActive(false);
         }
         carsModules[currentCarIndex].SetActive(true);
-        Camera.main.backgroundColor = backColour[currentCarIndex];
+        targetColor = backColour[currentCarIndex];
         _groundMat.SetColor("_Color", trackColour[currentCarIndex]);
     }
 
@@ -52,7 +53,7 @@ public class CarsRoulette : MonoBehaviour
     {
         State = StateEnum.Chosen;
         PlayerPrefs.SetInt("SelectedCar", currentCarIndex);
-    }
+    }    
 
     private void Update()
     {

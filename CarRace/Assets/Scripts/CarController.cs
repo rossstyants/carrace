@@ -8,7 +8,7 @@ public class CarController : MonoBehaviour
     bool movingLeft = true;
     bool firstInput = true;
     public GameObject pickUpEffect;          // reference to particle system
-    
+    [SerializeField] private CarRaycaster carRaycaster;
     
 
     // Start is called before the first frame update
@@ -29,6 +29,10 @@ public class CarController : MonoBehaviour
         {
             GameManager.instance.GameOver();
         }
+        //if (carRaycaster != null && !carRaycaster.IsOverTrack())
+        //{
+        //    GameManager.instance.GameOver();
+        //}
         
     }
     void Move()

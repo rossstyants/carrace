@@ -27,9 +27,11 @@ public class GameManager : MonoBehaviour
     public CameraFollow cameraFollow;                       // reference to the gameOver gameobject
     public CarsRoulette carsRoulette;
     public GameObject carRouletteScene, racingScene;
+    public SimpleFade transition;
 
-    public Text scoreText;                                
+    public Text scoreText;
     public Text highScoreText;
+    public Text gameoverScoreText;
     public Text gameOverScore;
     public Text gameOverCash;
 
@@ -62,26 +64,32 @@ public class GameManager : MonoBehaviour
 
         platformSpawner.SetActive(false);
         highScore = PlayerPrefs.GetInt("HighScore");                // get the highScore
-        highScoreText.text = "Best Score:" + highScore;             //prinat the highscore
+        highScoreText.text = "ABest Score:" + highScore;             //prinat the highscore
         cashText.text = ("Cash:" + points.ToString());              //print the cash 
-        gameOverScore.text= "Best Score:" + highScore;              // print the score in the game over panel
+        //gameOverScore.text= "Best Score:" + highScore;              // print the score in the game over panel
 
         State = StateEnum.ChoosingCar;
         cameraFollow.enabled = false;
+        gamePlayUI.SetActive(false);
+        gameOverPanel.SetActive(false);
         menuUIWaitingToStart.SetActive(false);                          // desactive Menu panel
         menuUIChooseCar.SetActive(true);
         carRouletteScene.SetActive(true);
         racingScene.SetActive(false);
+        transition.Hide();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        switch(State)
+        bool tapped = (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space));
+
+        switch (State)
         {
             case StateEnum.ChoosingCar:
 
-                if (Input.GetMouseButtonDown(0))
+                if (tapped)
                 {
                     carsRoulette.ChooseCurrentCar();
                     State = StateEnum.WaitingToStart;
@@ -96,7 +104,7 @@ public class GameManager : MonoBehaviour
                 break;
             case StateEnum.WaitingToStart:
 
-                if (Input.GetMouseButtonDown(0))
+                if (tapped)
                 {
                     State = StateEnum.Racing;
                     StartBTN();
@@ -105,9 +113,9 @@ public class GameManager : MonoBehaviour
                 break;
             case StateEnum.GameOver:
 
-                if (Input.GetMouseButtonDown(0))
+                if (tapped)
                 {
-                    ReloadGame();
+                    transition.Show(RestartApp);                    
                 }
 
                 break;
@@ -116,6 +124,12 @@ public class GameManager : MonoBehaviour
         cashText.text = ("Cash:" + points.ToString());
 
     }
+
+    private void RestartApp(int i)
+    {
+        ReloadGame();
+    }
+
     public void StartBTN()                      //Button start 
     {
         if (!gameStarted)                        // check if the game started bool is equal false call the function gamestart
@@ -142,18 +156,20 @@ public class GameManager : MonoBehaviour
         StopCoroutine("UpdateScore");                     // stop the function Update the score
         SaveHighScore();
 
-        Invoke("ReloadLevel", 1f);                         // call function to reload level
+        gameoverScoreText.text = score.ToString("D5");
+
+        Invoke("ShowGameOverPanel", 1f);                         // call function to reload level
 
         if (points > PlayerPrefs.GetInt("Score"))             // check if points less than score value
         {
             PlayerPrefs.SetInt("Score", points);            // set game score value  to Points
         }
         cashText.text = ("Cash:" + points.ToString());
-        gameOverScore.text= "Best Score:" + highScore;
+       // gameOverScore.text= "Best Score:" + highScore;
         gameOverCash.text= ("Cash:" + points.ToString());
         State = StateEnum.GameOver;
     }
-    public void ReloadLevel()
+    public void ShowGameOverPanel()
     {
         //SceneManager.LoadScene("Menu");
         gameOverPanel.SetActive(true);              //active game over panel
@@ -170,7 +186,7 @@ public class GameManager : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(1f);        //wait 1 secend and increase the score
-            score++;
+            score+=100;
             //points++;
 
             scoreText.text = score.ToString();
@@ -180,7 +196,7 @@ public class GameManager : MonoBehaviour
 
     public void IncrementScore()
     {
-        score += 5;                                     //increase score by 5 points
+        score += 500;                                     //increase score by 5 points
         points += 3;                                    // increase cash by 3 points
         scoreText.text = score.ToString();
         audioSource.PlayOneShot(gameMusic[2]);          //play coin sound
