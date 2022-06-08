@@ -6,13 +6,13 @@ public class CameraFollow : MonoBehaviour
 {
     public Transform target;                                                    // reference to the car tronsform
 
-    Vector3 distance;                                                           // distance between camera and cars
+    public Vector3 distance;                                                           // distance between camera and cars
     public float smoothValue;
     // Start is called before the first frame update
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;          // Find the car with tag
-        distance = target.position - transform.position;                        // calculate distance
+        //distance = target.position - transform.position;                        // calculate distance
     }
 
     // Update is called once per frame

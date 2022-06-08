@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CarsRoulette : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class CarsRoulette : MonoBehaviour
     [SerializeField] private Material _groundMat;
     public Color[] backColour = new Color[4];
     public Color[] trackColour = new Color[4];
+    public CameraColorChange CameraColorChange;
+    public Text menuText;
 
     public Color targetColor;
 
@@ -39,8 +42,12 @@ public class CarsRoulette : MonoBehaviour
             car.SetActive(false);
         }
         carsModules[currentCarIndex].SetActive(true);
-        targetColor = backColour[currentCarIndex];
+        //        targetColor = backColour[currentCarIndex];
+        CameraColorChange.ChangeBackColour(backColour[currentCarIndex]);
+
         _groundMat.SetColor("_Color", trackColour[currentCarIndex]);
+        menuText.color = trackColour[currentCarIndex];
+        UIBoss.Instance.ShowRouletteScreen(carId);
     }
 
     public void StartChoosing()
@@ -53,6 +60,7 @@ public class CarsRoulette : MonoBehaviour
     {
         State = StateEnum.Chosen;
         PlayerPrefs.SetInt("SelectedCar", currentCarIndex);
+        GameManager.Instance.SelectedVehicle = (GameManager.VehicleType)currentCarIndex;
     }    
 
     private void Update()

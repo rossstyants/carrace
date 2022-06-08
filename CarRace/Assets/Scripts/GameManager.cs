@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
     public enum StateEnum
     {
@@ -13,6 +13,15 @@ public class GameManager : MonoBehaviour
         Racing,
         GameOver
     }
+    public enum VehicleType
+    {
+        Boat,
+        Train,
+        Lorry,
+        Aeroplane
+    }
+
+    public VehicleType SelectedVehicle;
 
     public StateEnum State;
 
@@ -23,11 +32,13 @@ public class GameManager : MonoBehaviour
     public GameObject gamePlayUI;                          // reference to the game play ui gameobject
     public GameObject menuUIChooseCar;                              // reference to the Menu gameobject
     public GameObject menuUIWaitingToStart;                              // reference to the Menu gameobject
+    public GameObject menuUIShared;                              // reference to the Menu gameobject
     public GameObject gameOverPanel;                       // reference to the gameOver gameobject
     public CameraFollow cameraFollow;                       // reference to the gameOver gameobject
     public CarsRoulette carsRoulette;
     public GameObject carRouletteScene, racingScene;
     public SimpleFade transition;
+    public UIBoss UIBoss;
 
     public Text scoreText;
     public Text highScoreText;
@@ -74,10 +85,11 @@ public class GameManager : MonoBehaviour
         gameOverPanel.SetActive(false);
         menuUIWaitingToStart.SetActive(false);                          // desactive Menu panel
         menuUIChooseCar.SetActive(true);
+        menuUIShared.SetActive(true);
         carRouletteScene.SetActive(true);
         racingScene.SetActive(false);
         transition.Hide();
-
+        UIBoss.ShowRouletteScreen(0);
     }
 
     // Update is called once per frame
@@ -98,7 +110,7 @@ public class GameManager : MonoBehaviour
                     menuUIWaitingToStart.SetActive(true);
                     carRouletteScene.SetActive(false);
                     racingScene.SetActive(true);
-
+                    UIBoss.ShowWaitingToStartScreen();
                 }
 
                 break;
@@ -144,7 +156,7 @@ public class GameManager : MonoBehaviour
         platformSpawner.SetActive(true);                  //active the platforeSpawner
         menuUIWaitingToStart.SetActive(false);                          // desactive Menu panel
         gamePlayUI.SetActive(true);                       //active game play Ui panel
-
+        menuUIShared.SetActive(false);
         audioSource.clip = gameMusic[1];              
         audioSource.Play();                             // play the sound 1
         StartCoroutine("UpdateScore");                  // call function to Update the score
@@ -152,6 +164,10 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        if (State == StateEnum.GameOver)
+        {
+            return;
+        }
         platformSpawner.SetActive(false);                 // desactive platformSpawner
         StopCoroutine("UpdateScore");                     // stop the function Update the score
         SaveHighScore();
@@ -171,11 +187,16 @@ public class GameManager : MonoBehaviour
     }
     public void ShowGameOverPanel()
     {
-        //SceneManager.LoadScene("Menu");
+        transition.Show(OnShowGameOver);        
+    }
+
+    private void OnShowGameOver(int i)
+    {
+        transition.Hide();
         gameOverPanel.SetActive(true);              //active game over panel
         gamePlayUI.SetActive(false);                //desactive gamePlay Ui
-        
     }
+
     public void ReloadGame()
     {
         SceneManager.LoadScene("Game");      
