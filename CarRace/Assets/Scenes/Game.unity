@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657958, g: 0.4964137, b: 0.5748193, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1208,7 +1208,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -1266,13 +1266,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 170076733}
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
+  m_LocalRotation: {x: 0.39044833, y: -0.34682897, z: 0.161729, w: 0.8373192}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 50, y: -45, z: 0}
 --- !u!1 &231822336
 GameObject:
   m_ObjectHideFlags: 0
@@ -1554,7 +1554,7 @@ RectTransform:
   m_GameObject: {fileID: 265318063}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2138, y: 1.2138, z: 1.2138}
+  m_LocalScale: {x: 0.3763175, y: 0.3763175, z: 0.3763175}
   m_Children: []
   m_Father: {fileID: 1159315751}
   m_RootOrder: 1
@@ -1562,7 +1562,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 453.41, y: 1042.3}
-  m_SizeDelta: {x: 768.614, y: 111.541626}
+  m_SizeDelta: {x: 1000, y: 500}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &265318065
 MonoBehaviour:
@@ -1586,7 +1586,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: b92cefea3bdc2844f8ffd27ffa9bc582, type: 3}
-    m_FontSize: 80
+    m_FontSize: 256
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
@@ -2355,7 +2355,7 @@ Transform:
   - {fileID: 1544147345557282120}
   - {fileID: 799103467}
   m_Father: {fileID: 1658216147}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &434755716
 MonoBehaviour:
@@ -2684,7 +2684,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.5050285, g: 0.8823679, b: 0.9150943, a: 0}
+  m_BackGroundColor: {r: 0.24705884, g: 0.5921569, b: 0.82745105, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -3420,84 +3420,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 689189833}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &718062431
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 718062432}
-  - component: {fileID: 718062435}
-  - component: {fileID: 718062434}
-  - component: {fileID: 718062433}
-  m_Layer: 0
-  m_Name: Camaro
-  m_TagString: Player
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &718062432
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 718062431}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.797}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
-  m_Children:
-  - {fileID: 1420905328}
-  m_Father: {fileID: 1658216147}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &718062433
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 718062431}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c4f17b09186a2a43a35371cc0a910b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speedMove: 5
-  pickUpEffect: {fileID: 692793591420004884, guid: 2a9af40ac29349942809823bef56e2f9, type: 3}
-  carRaycaster: {fileID: 0}
---- !u!54 &718062434
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 718062431}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!65 &718062435
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 718062431}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1.1585753, y: 0.8270085, z: 3.1838443}
-  m_Center: {x: 0.0072079897, y: 0.54780513, z: 0.13548124}
 --- !u!1 &724016062
 GameObject:
   m_ObjectHideFlags: 0
@@ -4298,7 +4220,7 @@ GameObject:
   m_Component:
   - component: {fileID: 905902634}
   m_Layer: 0
-  m_Name: Car 3
+  m_Name: Truck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4833,15 +4755,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _groundMat: {fileID: 2100000, guid: f7c9375e5acb8604b92f436870705114, type: 2}
   backColour:
-  - {r: 0.9647059, g: 0.9607843, b: 0.9411765, a: 1}
-  - {r: 0.03137255, g: 0.78039217, b: 0.57254905, a: 1}
-  - {r: 0.92941177, g: 0.16078432, b: 0.22352941, a: 1}
-  - {r: 0, g: 0.6, b: 0.85490197, a: 1}
+  - {r: 0.9686275, g: 0.9607844, b: 0.93725497, a: 1}
+  - {r: 0.40784317, g: 0.7686275, b: 0.5921569, a: 1}
+  - {r: 0.83921576, g: 0.22352943, b: 0.24705884, a: 1}
+  - {r: 0.24705884, g: 0.5921569, b: 0.82745105, a: 1}
   trackColour:
-  - {r: 0.105882354, g: 0.44313726, b: 0.67058825, a: 1}
-  - {r: 0.23529412, g: 0.22745098, b: 0.1764706, a: 1}
-  - {r: 0.91764706, g: 0.85882354, b: 0.7921569, a: 1}
-  - {r: 0.96470594, g: 0.9607844, b: 0.94117653, a: 1}
+  - {r: 0.0627451, g: 0.43137255, b: 0.6, a: 1}
+  - {r: 0.050980393, g: 0.047058824, b: 0, a: 1}
+  - {r: 0.6784314, g: 0.6117647, b: 0.50980395, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
   CameraColorChange: {fileID: 534669907}
   menuText: {fileID: 1922597392}
   targetColor: {r: 0, g: 0, b: 0, a: 0}
@@ -5575,7 +5497,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1159315751
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6378,7 +6300,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1354895269
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6676,87 +6598,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1393674825}
   m_CullTransparentMesh: 0
---- !u!1 &1420905327
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1420905328}
-  - component: {fileID: 1420905330}
-  - component: {fileID: 1420905329}
-  m_Layer: 0
-  m_Name: default
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1420905328
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1420905327}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 718062432}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &1420905329
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1420905327}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: d589996476aae7448816a6ba44085b19, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1420905330
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1420905327}
-  m_Mesh: {fileID: -2432090755550338912, guid: 796dd9e7fc9bdf1478dcbaa7f7060321, type: 3}
 --- !u!1 &1456568228
 GameObject:
   m_ObjectHideFlags: 0
@@ -7416,7 +7257,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1658216147}
   m_Layer: 0
-  m_Name: Car 4
+  m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7433,7 +7274,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.494, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 718062432}
   - {fileID: 434755715}
   m_Father: {fileID: 1005542579}
   m_RootOrder: 3
