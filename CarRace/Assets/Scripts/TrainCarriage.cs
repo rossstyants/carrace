@@ -6,18 +6,29 @@ public class TrainCarriage : MonoBehaviour
 {
     public float howFarBack;
     public PathRecorder followObject;
+    public Vector3 initialOffset;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        initialOffset = followObject.transform.position - transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
         Quaternion rot;
-        transform.position = followObject.GetPosition(howFarBack, out rot);
-        transform.rotation = rot;
+        bool hasValue;
+        Vector3 pos = followObject.GetPosition(howFarBack, out rot, out hasValue);
+        if (hasValue)
+        {
+            transform.position = pos;
+            transform.rotation = rot;
+        }
+        else
+        {
+            //just maintain the offset to the front carriage until we have values
+            transform.position = followObject.transform.position - initialOffset;
+        }
     }
 }

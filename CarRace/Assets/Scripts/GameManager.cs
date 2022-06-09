@@ -24,8 +24,12 @@ public class GameManager : Singleton<GameManager>
     public VehicleType SelectedVehicle;
 
     public StateEnum State;
+    private float stateTimer;
 
     public static GameManager instance;
+
+    [SerializeField] private float _gameOverScreenMaxDuration;
+    private bool inTransition;
 
     public bool gameStarted;
     public GameObject platformSpawner;                     //reference to the platform spawner
@@ -39,6 +43,7 @@ public class GameManager : Singleton<GameManager>
     public GameObject carRouletteScene, racingScene;
     public SimpleFade transition;
     public UIBoss UIBoss;
+    public PathRecorder trainPathRecorder;
 
     public Text scoreText;
     public Text highScoreText;
@@ -97,6 +102,8 @@ public class GameManager : Singleton<GameManager>
     {
         bool tapped = (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space));
 
+        stateTimer += Time.deltaTime;
+
         switch (State)
         {
             case StateEnum.ChoosingCar:
@@ -125,11 +132,14 @@ public class GameManager : Singleton<GameManager>
                 break;
             case StateEnum.GameOver:
 
-                if (tapped)
+                if (!inTransition)
                 {
-                    transition.Show(RestartApp);                    
+                    if (tapped || stateTimer >= _gameOverScreenMaxDuration)
+                    {
+                        transition.Show(RestartApp);
+                        inTransition = true;
+                    }
                 }
-
                 break;
         }
 
@@ -139,6 +149,7 @@ public class GameManager : Singleton<GameManager>
 
     private void RestartApp(int i)
     {
+        inTransition = false;
         ReloadGame();
     }
 
@@ -160,6 +171,7 @@ public class GameManager : Singleton<GameManager>
         audioSource.clip = gameMusic[1];              
         audioSource.Play();                             // play the sound 1
         StartCoroutine("UpdateScore");                  // call function to Update the score
+        trainPathRecorder.IsRecording = true;
     }
 
     public void GameOver()
@@ -184,6 +196,7 @@ public class GameManager : Singleton<GameManager>
        // gameOverScore.text= "Best Score:" + highScore;
         gameOverCash.text= ("Cash:" + points.ToString());
         State = StateEnum.GameOver;
+        stateTimer = 0f;
     }
     public void ShowGameOverPanel()
     {

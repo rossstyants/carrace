@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 582ffca0214d92144a39fa377a28e89a
+guid: 0c4b16a6dec7a6c4db97a18039d358d8
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Plane_mat
-    second: {fileID: 2100000, guid: 9250075972626cc4090cead7caad14ff, type: 2}
+      name: Truck_mat
+    second: {fileID: 2100000, guid: 01b03c6870cc4b94fa25327707900cb5, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
