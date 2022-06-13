@@ -15,7 +15,7 @@ public class TrainCarriage : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         Quaternion rot;
         bool hasValue;

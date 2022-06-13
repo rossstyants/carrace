@@ -16,7 +16,5 @@ public class CarsSelector : MonoBehaviour
             car.SetActive(false);
         }
         carsModules[currentCarIndex].SetActive(true);
-
-
     }
 }

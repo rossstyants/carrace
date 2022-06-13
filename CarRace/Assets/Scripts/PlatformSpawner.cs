@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlatformSpawner : MonoBehaviour
+public class PlatformSpawner : Singleton<PlatformSpawner>
 {
     [SerializeField] private float timeTweenPlatforms;
+    [SerializeField] private float distanceToPlatform;
+    [SerializeField] private int startPlatforms;
     float timer;
 
     public GameObject platform;
 
     public Transform lastPlatform;
-    Vector3 lastPosition;
+    public Vector3 lastPosition;
     Vector3 newPos;
 
     bool stop;
@@ -18,6 +20,13 @@ public class PlatformSpawner : MonoBehaviour
     void Start()
     {
         lastPosition = lastPlatform.position;
+
+        for (int i = 0; i < startPlatforms; i++)
+        {
+            GeneratePosition();
+            Instantiate(platform, newPos, Quaternion.identity);
+            lastPosition = newPos;
+        }
 
         //Debug.Log("Start PLATFROM SPAWNER");
 
@@ -31,15 +40,20 @@ public class PlatformSpawner : MonoBehaviour
 
     void Update()
     {
-        timer += Time.deltaTime;
-        if (timer >= timeTweenPlatforms)
-        {
-            timer -= timeTweenPlatforms;
+        //timer += Time.deltaTime;
+        //if (timer >= timeTweenPlatforms)
+        //{
+        //    timer -= timeTweenPlatforms;
 
-            GeneratePosition();
-            Instantiate(platform, newPos, Quaternion.identity);
-            lastPosition = newPos;
-        }
+        //    BuildPlatform();
+        //}
+    }
+
+    public void BuildPlatform()
+    {
+        GeneratePosition();
+        Instantiate(platform, newPos, Quaternion.identity);
+        lastPosition = newPos;
     }
 
     //IEnumerator SpawnPlatforms()

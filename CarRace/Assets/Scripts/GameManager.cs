@@ -21,6 +21,8 @@ public class GameManager : Singleton<GameManager>
         Aeroplane
     }
 
+    public float platformDist = 10f;
+
     public VehicleType SelectedVehicle;
 
     public StateEnum State;
@@ -58,6 +60,7 @@ public class GameManager : Singleton<GameManager>
     int highScore;                                        // when store the haighScore value
     public Text cashText;
     public static int points;
+    public GameObject Player;
     // Start is called before the first frame update
     void Awake()
     {
@@ -130,6 +133,15 @@ public class GameManager : Singleton<GameManager>
                 }
 
                 break;
+            case StateEnum.Racing:
+
+                Vector3 distVec = PlatformSpawner.Instance.lastPosition - Player.transform.position;
+                if (distVec.magnitude <= platformDist)
+                {
+                    PlatformSpawner.Instance.BuildPlatform();
+                }
+
+                break;
             case StateEnum.GameOver:
 
                 if (!inTransition)
@@ -172,6 +184,7 @@ public class GameManager : Singleton<GameManager>
         audioSource.Play();                             // play the sound 1
         StartCoroutine("UpdateScore");                  // call function to Update the score
         trainPathRecorder.IsRecording = true;
+        Player = GameObject.FindGameObjectWithTag("Player");
     }
 
     public void GameOver()
